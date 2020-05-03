@@ -1,0 +1,46 @@
+one loop
+1.
+given: get 0 for twice
+when: get score
+then: return 0
+
+2.
+given: get 0 for first time and 9 for second time
+when: get score
+then: return 9
+
+3.
+given: get 10 for first time
+when: isStrike
+then: return true
+
+4.
+given: get 10 for second time
+when: isSpare
+then: return true
+
+whole game
+1.
+given: get 0 for 20 times
+when: get score
+then: return 0
+
+2.
+given: get 4 for 20 times
+when: get score
+then: return 80
+
+3.
+given: get 10 for first time and 4 for next 18 times
+when: get score
+then: return 82
+
+4.
+given: get 9 for first time and 1 for second time and 3 for next 18 times
+when: get score
+then: return 67
+
+5.
+given: get 2 for 19 times and 8 for last time and 9 for the plus time
+when: get score
+then: return 55

@@ -14,4 +14,8 @@ public class SingleBowling {
   public int getScore() {
     return firstScore + secondScore;
   }
+
+  public boolean isStrike() {
+    return firstScore == 10;
+  }
 }

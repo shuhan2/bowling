@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SingleBowlingTest {
 
@@ -20,5 +21,13 @@ class SingleBowlingTest {
     singleBowling.rollSecond(9);
 
     assertEquals(9, singleBowling.getScore());
+  }
+
+  @Test
+  void should_return_true_when_verify_is_strike_given_10_for_first_time() {
+    SingleBowling singleBowling = new SingleBowling();
+    singleBowling.rollFirst(10);
+
+    assertTrue(singleBowling.isStrike());
   }
 }

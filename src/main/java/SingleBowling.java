@@ -18,4 +18,8 @@ public class SingleBowling {
   public boolean isStrike() {
     return firstScore == 10;
   }
+
+  public boolean isSpare() {
+    return (firstScore + secondScore) == 10;
+  }
 }

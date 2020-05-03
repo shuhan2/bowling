@@ -30,4 +30,13 @@ class SingleBowlingTest {
 
     assertTrue(singleBowling.isStrike());
   }
+
+  @Test
+  void should_return_true_when_verify_is_spare_given_1_for_first_time_and_9_for_second() {
+    SingleBowling singleBowling = new SingleBowling();
+    singleBowling.rollFirst(1);
+    singleBowling.rollSecond(9);
+
+    assertTrue(singleBowling.isSpare());
+  }
 }

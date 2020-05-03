@@ -12,6 +12,6 @@ public class SingleBowling {
   }
 
   public int getScore() {
-    return 0;
+    return firstScore + secondScore;
   }
 }

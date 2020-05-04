@@ -1,5 +1,7 @@
 public class SingleBowling {
 
+
+
   private int firstScore;
   private int secondScore;
 
@@ -13,6 +15,10 @@ public class SingleBowling {
 
   public int getScore() {
     return firstScore + secondScore;
+  }
+
+  public int getFirstScore() {
+    return firstScore;
   }
 
   public boolean isStrike() {

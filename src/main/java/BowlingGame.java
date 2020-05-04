@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class BowlingGame {
 
   private SingleBowling[] bowlings;
@@ -16,13 +14,14 @@ public class BowlingGame {
   public void roll(int pin) {
     if (isFirstRoll) {
       bowlings[currentIndex].rollFirst(pin);
-      if (pin == 10) {
+      if (bowlings[currentIndex].isStrike()) {
         bowlings[++currentIndex] = new SingleBowling();
       } else {
         isFirstRoll = false;
       }
     } else {
       bowlings[currentIndex++].rollSecond(pin);
+
       if(currentIndex < 10) {
         bowlings[currentIndex] = new SingleBowling();
         isFirstRoll = true;
@@ -36,6 +35,9 @@ public class BowlingGame {
       score += bowlings[i].getScore();
       if (bowlings[i].isStrike()) {
         score += bowlings[i+1].getScore();
+      }
+      if (bowlings[i].isSpare()) {
+        score += bowlings[i+1].getFirstScore();
       }
     }
     return score;

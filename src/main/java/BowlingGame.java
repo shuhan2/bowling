@@ -13,16 +13,14 @@ public class BowlingGame {
   }
 
 
-  public int getScore() {
-    return Arrays.stream(bowlings)
-        .map(SingleBowling::getScore)
-        .reduce(0, Integer::sum);
-  }
-
   public void roll(int pin) {
     if (isFirstRoll) {
       bowlings[currentIndex].rollFirst(pin);
-      isFirstRoll = false;
+      if (pin == 10) {
+        bowlings[++currentIndex] = new SingleBowling();
+      } else {
+        isFirstRoll = false;
+      }
     } else {
       bowlings[currentIndex++].rollSecond(pin);
       if(currentIndex < 10) {
@@ -30,5 +28,16 @@ public class BowlingGame {
         isFirstRoll = true;
       }
     }
+  }
+
+  public int getScore() {
+    int score = 0;
+    for (int i = 0; i < 10; i++) {
+      score += bowlings[i].getScore();
+      if (bowlings[i].isStrike()) {
+        score += bowlings[i+1].getScore();
+      }
+    }
+    return score;
   }
 }

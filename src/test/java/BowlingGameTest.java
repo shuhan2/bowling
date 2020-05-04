@@ -24,4 +24,15 @@ class BowlingGameTest {
     assertEquals(80, bowlingGame.getScore());
   }
 
+  @Test
+  void should_return_90_when_get_score_given_get_4_every_time() {
+
+    BowlingGame bowlingGame = new BowlingGame();
+    bowlingGame.roll(10);
+    for (int i = 0; i < 18; i++) {
+      bowlingGame.roll(4);
+    }
+    assertEquals(90, bowlingGame.getScore());
+  }
+
 }

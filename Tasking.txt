@@ -33,7 +33,7 @@ then: return 80
 3.
 given: get 10 for first time and 4 for next 18 times
 when: get score
-then: return 82
+then: return 90
 
 4.
 given: get 9 for first time and 1 for second time and 3 for next 18 times

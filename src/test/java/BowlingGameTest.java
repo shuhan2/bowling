@@ -46,5 +46,4 @@ class BowlingGameTest {
     }
     assertEquals(67, bowlingGame.getScore());
   }
-
 }

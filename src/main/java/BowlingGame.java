@@ -36,7 +36,7 @@ public class BowlingGame {
       if (bowlings[i].isStrike()) {
         score += bowlings[i+1].getScore();
       }
-      if (bowlings[i].isSpare()) {
+      else if (bowlings[i].isSpare()) {
         score += bowlings[i+1].getFirstScore();
       }
     }

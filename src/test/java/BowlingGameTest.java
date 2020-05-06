@@ -46,4 +46,18 @@ class BowlingGameTest {
     }
     assertEquals(67, bowlingGame.getScore());
   }
+
+  @Test
+  void should_return_55_when_get_score_given_2_for_19_times_and_8_for_last_time_and_9_for_plus_chance() {
+
+    BowlingGame bowlingGame = new BowlingGame();
+
+    for (int i = 0; i < 19; i++) {
+      bowlingGame.roll(2);
+    }
+    bowlingGame.roll(8);
+    bowlingGame.roll(9);
+    assertEquals(55, bowlingGame.getScore());
+  }
+
 }

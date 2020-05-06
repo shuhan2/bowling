@@ -4,6 +4,7 @@ public class SingleBowling {
 
   private int firstScore;
   private int secondScore;
+  private int thirdScore;
 
   public void rollFirst(int firstPin) {
     firstScore = firstPin;
@@ -13,8 +14,12 @@ public class SingleBowling {
     secondScore = secondPin;
   }
 
+  public void rollThird(int thirdPin) {
+    thirdScore = thirdPin;
+  }
+
   public int getScore() {
-    return firstScore + secondScore;
+    return firstScore + secondScore + thirdScore;
   }
 
   public int getFirstScore() {

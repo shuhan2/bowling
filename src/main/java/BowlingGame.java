@@ -2,17 +2,22 @@ public class BowlingGame {
 
   private SingleBowling[] bowlings;
   private Boolean isFirstRoll;
+  private Boolean isThirdRoll;
   private int currentIndex;
 
   public BowlingGame() {
     this.bowlings = new SingleBowling[10];
     bowlings[0] = new SingleBowling();
     this.isFirstRoll = true;
+    this.isThirdRoll = false;
   }
 
 
   public void roll(int pin) {
-    if (isFirstRoll) {
+    if (isThirdRoll) {
+      bowlings[currentIndex].rollThird(pin);
+    }
+    else if (isFirstRoll) {
       bowlings[currentIndex].rollFirst(pin);
       if (bowlings[currentIndex].isStrike()) {
         bowlings[++currentIndex] = new SingleBowling();
@@ -20,10 +25,12 @@ public class BowlingGame {
         isFirstRoll = false;
       }
     } else {
-      bowlings[currentIndex++].rollSecond(pin);
-
-      if(currentIndex < 10) {
-        bowlings[currentIndex] = new SingleBowling();
+      bowlings[currentIndex].rollSecond(pin);
+      if (currentIndex == 9 && (bowlings[currentIndex].isSpare() || bowlings[currentIndex].isStrike())) {
+        isThirdRoll = true;
+      }
+      if (currentIndex < 9) {
+        bowlings[++currentIndex] = new SingleBowling();
         isFirstRoll = true;
       }
     }
@@ -31,13 +38,14 @@ public class BowlingGame {
 
   public int getScore() {
     int score = 0;
-    for (int i = 0; i < 10; i++) {
-      score += bowlings[i].getScore();
-      if (bowlings[i].isStrike()) {
-        score += bowlings[i+1].getScore();
-      }
-      else if (bowlings[i].isSpare()) {
-        score += bowlings[i+1].getFirstScore();
+    for (int index = 0; index < 10; index++) {
+      score += bowlings[index].getScore();
+      if (index < 9) {
+        if (bowlings[index].isStrike()) {
+          score += bowlings[index + 1].getScore();
+        } else if (bowlings[index].isSpare()) {
+          score += bowlings[index + 1].getFirstScore();
+        }
       }
     }
     return score;
